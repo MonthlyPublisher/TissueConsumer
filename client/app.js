@@ -4,6 +4,8 @@ var videoCtrlScope;
 var rootScope;
 var filterInput = document.getElementById('filterInput');
 
+var filterList = document.getElementById('filterList');
+var content = document.getElementById('content');
 window.onhashchange = function() {
 	window.scrollTo(0, 0);
 
@@ -17,6 +19,9 @@ window.onhashchange = function() {
 		rootScope.filterArray = [];
 		rootScope.$apply();		
 	}
+	
+	console.log("height : " + filterList.offsetHeight);
+	content.style.height = 'calc(100vh - 150px - 5px - ' + filterList.offsetHeight + 'px)';
 };
 
 myApp.controller('VideoCtrl', ['$rootScope', '$scope', '$http', function ($rootScope, $scope, $http) {
@@ -49,6 +54,8 @@ myApp.controller('VideoCtrl', ['$rootScope', '$scope', '$http', function ($rootS
 					}
 				}
 			}
+			
+			
 			
 			return true;
 		}
@@ -155,7 +162,7 @@ myApp.directive('actorButton', function ($http) {
 		var middle = child[1];
 		var extnalLink = child[2];
 		t = link;
-		if (scope.video.actor.length == 3) {
+		if (scope.video.actor && scope.video.actor.length == 3) {
 			link.textContent = scope.video.actor[0];
 			middle.textContent = " - ";
 			extnalLink.textContent = scope.video.actor[2];
@@ -254,4 +261,8 @@ function loadList($http, searchQuery) {
   .error(function (data, status, headers, config) {
     // 이런. 뭔가 잘못되었음! :(
   });
+}
+
+function resized() {
+	console.log("hey ho");
 }

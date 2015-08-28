@@ -6,10 +6,15 @@
 <body>
 
 <div ng-app="myApp">
-	<div class='content'>
-		<div class="filterList">
-			<ul> <li ng-repeat="filter in filterArray"><button filter-button>{{ '#'+filter.value }}</button></li></ul>
-		</div>
+	<div class="header">
+		<input class="find"/>
+	</div>
+	<div id="filterList" class="filterList">
+		<ul> 
+			<li ng-repeat="filter in filterArray"><button filter-button>{{ '#'+filter.value }}</button></li>
+		</ul>
+	</div>
+	<div id="content" class='content'>
 		<div id='videos' ng-controller="VideoCtrl">
 			<ul>
 				<li ng-repeat="video in avinfo.data | filter:videoFilter">
