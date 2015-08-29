@@ -20,8 +20,9 @@ window.onhashchange = function() {
 		rootScope.$apply();		
 	}
 	
+	var calc = 'calc(150px + 5px + ' + filterList.offsetHeight + 'px)';
 	console.log("height : " + filterList.offsetHeight);
-	content.style.height = 'calc(100vh - 150px - 5px - ' + filterList.offsetHeight + 'px)';
+	content.style.marginTop = calc;
 };
 
 myApp.controller('VideoCtrl', ['$rootScope', '$scope', '$http', function ($rootScope, $scope, $http) {
@@ -261,8 +262,4 @@ function loadList($http, searchQuery) {
   .error(function (data, status, headers, config) {
     // 이런. 뭔가 잘못되었음! :(
   });
-}
-
-function resized() {
-	console.log("hey ho");
 }

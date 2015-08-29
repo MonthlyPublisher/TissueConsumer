@@ -6,46 +6,50 @@
 <body>
 
 <div ng-app="myApp">
-	<div class="header">
-		<input class="find"/>
-	</div>
-	<div id="filterList" class="filterList">
-		<ul> 
-			<li ng-repeat="filter in filterArray"><button filter-button>{{ '#'+filter.value }}</button></li>
-		</ul>
-	</div>
-	<div id="content" class='content'>
-		<div id='videos' ng-controller="VideoCtrl">
-			<ul>
-				<li ng-repeat="video in avinfo.data | filter:videoFilter">
-					<div class="video_key">
-						<span>{{ video.title }}</span>
-						<a class="play" play-button>  ▶  </a>
-						<a class="open" open-button>  ▲  </a>						
-						<a class="delete" delete-button>  DEL  </a>						
-					</div>
-					<div class="info">
-						<div class="info_text">
-							<table>
-							<tr>
-								<td class='name'>actor</td>
-								<td class='value'><a actor-button>테스트</a></td>
-							</tr><tr>
-								<td class='name'>title</td> 
-								<td class='value'>{{ video['제목'] }}</td>
-							</tr><tr>
-								<td class='name'>series</td>
-								<td class='value'>{{ video['시리즈'] }}</td>
-							<tr>
-							</table>
+	<div class="outer">
+		<div id="content" class='content'>
+			<div id='videos' ng-controller="VideoCtrl">
+				<ul>
+					<li ng-repeat="video in avinfo.data | filter:videoFilter">
+						<div class="video_key">
+							<span>{{ video.title }}</span>
+							<a class="play" play-button>  ▶  </a>
+							<a class="open" open-button>  ▲  </a>						
+							<a class="delete" delete-button>  DEL  </a>						
 						</div>
-						<img src='{{video.image}}'/>
-					</div>
-					<div class="bottom">
-						<ul class='genre'> <li class='genre' ng-repeat="genre in video['장르']"><button class='genre' genre-button>{{ genre }}</button></li></ul>
-					</div>
-				</li>
-			</ul>
+						<div class="info">
+							<div class="info_text">
+								<table>
+								<tr>
+									<td class='name'>actor</td>
+									<td class='value'><a actor-button>테스트</a></td>
+								</tr><tr>
+									<td class='name'>title</td> 
+									<td class='value'>{{ video['제목'] }}</td>
+								</tr><tr>
+									<td class='name'>series</td>
+									<td class='value'>{{ video['시리즈'] }}</td>
+								<tr>
+								</table>
+							</div>
+							<img src='{{video.image}}'/>
+						</div>
+						<div class="bottom">
+							<ul class='genre'> <li class='genre' ng-repeat="genre in video['장르']"><button class='genre' genre-button>{{ genre }}</button></li></ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="outer_header">
+			<div class="header">
+				<input class="find"/>
+			</div>
+			<div id="filterList" class="filterList">
+				<ul> 
+					<li ng-repeat="filter in filterArray"><button filter-button>{{ '#'+filter.value }}</button></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 <script src="app.js"></script>
